@@ -16,6 +16,8 @@ export default defineConfig({
 		// It ships TypeScript, which Node won't load from node_modules when Astro
 		// imports the site's config. Its server entrypoint is left to Vite.
 		alwaysBundle: [/^astro-aws-amplify$/],
+		// Fails the build if anything else from node_modules ends up bundled.
+		onlyBundle: ["astro-aws-amplify"],
 	},
 	dts: true,
 });

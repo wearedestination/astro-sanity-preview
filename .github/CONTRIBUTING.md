@@ -1,0 +1,27 @@
+# Contributing
+
+## Development
+
+```console
+npm ci
+npm run check
+npm run type-check
+npm test
+```
+
+`npm test` builds the package, then builds the site in `test/fixtures/site` both statically and as the preview build,
+runs the preview build's server and checks how it answers.
+
+## Pull requests
+
+- Cover any change in behaviour with a test. If the fixture site doesn't show the case, extend it or add another
+  under `test/fixtures`.
+- Update the README when an option or its behaviour changes.
+- CI runs the check, type-check and tests on every pull request, so run them locally first.
+- You're the author of every commit in your pull request, however it was written. Don't add `Co-Authored-By`
+  trailers or other credit for AI tools.
+
+## Releasing
+
+Bump `version` in `package.json`, commit, and push a matching `v<version>` tag. The publish workflow tests the
+package and publishes it to npm through trusted publishing (GitHub OIDC), so it needs no token.

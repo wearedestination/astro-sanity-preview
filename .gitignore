@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/test/fixtures/*/dist
+/test/fixtures/*/.astro
+/test/fixtures/*/.amplify-hosting
+/test/fixtures/*/node_modules
+*.tgz

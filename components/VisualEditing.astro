@@ -1,0 +1,10 @@
+---
+// Renders the Presentation tool's overlays in draft mode, and nothing otherwise.
+import { isDraftMode } from "../dist/client.mjs";
+---
+
+{isDraftMode(Astro) && (
+	<script>
+		import "../dist/visual-editing.mjs";
+	</script>
+)}

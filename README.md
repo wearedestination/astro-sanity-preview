@@ -20,7 +20,7 @@ Studio's Presentation tool at that app's URL (see [Studio](#studio)).
 ## Installation
 
 ```console
-pnpm add @destination/astro-sanity-preview
+npm install @destination/astro-sanity-preview
 ```
 
 It needs [`@sanity/astro`](https://github.com/sanity-io/sanity-astro) configured, as it reads drafts through

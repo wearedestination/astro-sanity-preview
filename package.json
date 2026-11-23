@@ -1,6 +1,6 @@
 {
 	"name": "@destination/astro-sanity-preview",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Astro integration that serves Sanity draft previews to the Studio's Presentation tool from a server build on AWS Amplify.",
 	"keywords": [
 		"astro",

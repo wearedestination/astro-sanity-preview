@@ -6,9 +6,12 @@ import { fileURLToPath } from "node:url";
 import sanity from "@sanity/astro";
 import { build } from "astro";
 import { afterAll, beforeAll, describe, expect, test } from "vitest";
-// The built package, as a site installs it.
-import sanityPreview from "../dist/index.mjs";
 import { createDraftModeValue, DRAFT_MODE_COOKIE } from "../src/draft-mode";
+import type builtSanityPreview from "../src/index";
+
+// The built package, as a site installs it. npm test builds it first.
+const { default: sanityPreview }: { default: typeof builtSanityPreview } =
+	await import(new URL("../dist/index.mjs", import.meta.url).href);
 
 const root = fileURLToPath(new URL("./fixtures/site/", import.meta.url));
 const TOKEN = "test-token";

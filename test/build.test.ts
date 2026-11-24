@@ -62,6 +62,10 @@ describe("the static build", async () => {
 		expect(html).not.toContain("<script");
 	});
 
+	test("leaves out the visual editing code", async () => {
+		expect(await files(outDir)).toEqual([`${outDir}index.html`]);
+	});
+
 	test("has no deployment bundle", async () => {
 		expect(await files(outDir)).not.toContainEqual(
 			expect.stringContaining("deploy-manifest.json"),

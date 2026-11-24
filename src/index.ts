@@ -23,6 +23,9 @@ export interface Options {
 
 const NAME = "@destination/astro-sanity-preview";
 const CONFIG_MODULE = `virtual:${NAME}/config`;
+const VISUAL_EDITING = fileURLToPath(
+	new URL("./visual-editing.mjs", import.meta.url),
+);
 
 /** Whether this is the preview build, for leaving out integrations that need a static one. */
 export function isPreviewBuild() {
@@ -56,6 +59,14 @@ export default function sanityPreview(options: Options = {}): AstroIntegration {
 									id === `\0${CONFIG_MODULE}`
 										? `export const studioUrl = ${JSON.stringify(studioUrl)};`
 										: undefined,
+							},
+							// Astro bundles a component's scripts whether or not it renders
+							// them, so without this the static build ships the visual editing
+							// code that VisualEditing.astro never loads there.
+							!enabled && {
+								name: `${NAME}/no-visual-editing`,
+								load: (id) =>
+									id.split("?")[0] === VISUAL_EDITING ? "" : undefined,
 							},
 						],
 						// The package imports virtual modules, so Vite has to bundle it.
